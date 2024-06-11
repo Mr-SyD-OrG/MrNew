@@ -634,6 +634,18 @@ async def start(client, message):
     await k.edit_text("<b>Your File/Video is successfully deleted!!!\n\nClick below button to get your deleted file 👇</b>",reply_markup=InlineKeyboardMarkup(btn))
     return   
 
+@Client.on_message(filters.command("mrsyd") & filters.user(ADMINS))
+async def syd(bot, message):
+    button = [[
+        InlineKeyboardButton("About", callback_data="about")
+        ],[
+        InlineKeyboardButton("help", callback_data="help")
+        ], [
+        InlineKeyboardButton("Search", switch_inline_query_current_chat='')
+    ]]
+    await message.reply_text('This Will Delete All Indexed Files.\ndo You Want To Continue??', quote=True, reply_markup=InlineKeyboardMarkup(button))
+
+
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
     if isinstance(CHANNELS, (int, str)):
