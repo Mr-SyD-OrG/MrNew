@@ -91,6 +91,11 @@ async def is_subscribed(bot, query):
             if user.status != enums.ChatMemberStatus.BANNED:
                 return True
         return False
+        
+__repo__ = "https://github.com/Mr-SyD-OrG/MrNew"
+__version__ = "PROFEOT ᴠ4.5.0"
+__license__ = "GNU GENERAL PUBLIC LICENSE V2"
+__copyright__ = "Copyright (C) 2023-present MrMKN <https://github.com/MrN>"
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
