@@ -8,7 +8,7 @@ from pyrogram.file_id import FileId
 
 from pyrogram.raw.types.messages import Messages
 
-from Mr_SyD.server.exceptions import FIleNotFound
+from Mr_SyD.exceptions import FIleNotFound
 
 
 
