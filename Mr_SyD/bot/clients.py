@@ -12,7 +12,7 @@ from pyrogram import Client
 
 from Mr_SyD.util.config_parser import TokenParser
 
-from Mr_SyD.bot import multi_clients, work_loads, TechVJBot
+from Mr_SyD.bot import multi_clients, work_loads, MrSyDBot
 
 
 
