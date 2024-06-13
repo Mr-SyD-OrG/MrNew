@@ -10,9 +10,9 @@ from info import *
 
 from pyrogram import Client
 
-from TechVJ.util.config_parser import TokenParser
+from Mr_SyD.util.config_parser import TokenParser
 
-from TechVJ.bot import multi_clients, work_loads, TechVJBot
+from Mr_SyD.bot import multi_clients, work_loads, TechVJBot
 
 
 
