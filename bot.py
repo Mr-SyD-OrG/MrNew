@@ -30,7 +30,7 @@ from Script import script
 from datetime import date, datetime 
 from aiohttp import web
 from plugins import web_server
-from Mr_SyD.bot import MrSyDBot
+from Mr_SyD.bot import SyDBot
 from Mr_SyD.util.keepalive import ping_server
 from Mr_SyD.bot.clients import initialize_clients
 
@@ -40,7 +40,7 @@ ppath = "plugins/*.py"
 
 files = glob.glob(ppath)
 
-MrSyDBot.start()
+SyDBot.start()
 
 loop = asyncio.get_event_loop()
 
@@ -54,7 +54,7 @@ async def start():
 
     print('Initalizing Your Bot')
 
-    bot_info = await MrSyDBot.get_me()
+    bot_info = await SyDBot.get_me()
 
     await initialize_clients()
 
@@ -92,7 +92,7 @@ async def start():
 
     await Media.ensure_indexes()
 
-    me = await TechVJBot.get_me()
+    me = await SyDBot.get_me()
 
     temp.ME = me.id
 
@@ -112,7 +112,7 @@ async def start():
 
     time = now.strftime("%H:%M:%S %p")
 
-    await TechVJBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
+    await SyDBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
 
     app = web.AppRunner(await web_server())
 
