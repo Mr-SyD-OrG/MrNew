@@ -40,7 +40,7 @@ ppath = "plugins/*.py"
 
 files = glob.glob(ppath)
 
-TechVJBot.start()
+MrSyDBot.start()
 
 loop = asyncio.get_event_loop()
 
@@ -54,7 +54,7 @@ async def start():
 
     print('Initalizing Your Bot')
 
-    bot_info = await TechVJBot.get_me()
+    bot_info = await MrSyDBot.get_me()
 
     await initialize_clients()
 
