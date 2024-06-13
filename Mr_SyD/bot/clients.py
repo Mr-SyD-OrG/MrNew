@@ -12,14 +12,14 @@ from pyrogram import Client
 
 from Mr_SyD.util.config_parser import TokenParser
 
-from Mr_SyD.bot import multi_clients, work_loads, MrSyDBot
+from Mr_SyD.bot import multi_clients, work_loads, SyDBot
 
 
 
 
 
 async def initialize_clients():
-    multi_clients[0] = TechVJBot
+    multi_clients[0] = SyDBot
     work_loads[0] = 0
     all_tokens = TokenParser().parse_from_env()
     if not all_tokens:
