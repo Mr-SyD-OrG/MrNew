@@ -40,7 +40,7 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/Pro_Moviez_Bot?startgroup=true")
+            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url="http://t.me/Pro_Moviez_Bot?startgroup=true")
             ],[
             InlineKeyboardButton("Gʀᴏᴜᴩ 📯", url='https://t.me/malayalam_requester_bot'),
             InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/Mod_Moviez_X")
@@ -48,7 +48,7 @@ async def start(client, message):
             InlineKeyboardButton("Bᴏᴛ Uᴩᴅᴀᴛᴇꜱ 💡", url="https://t.me/bot_cracker")
         ]]
         m = await message.reply_sticker("CAACAgUAAxkBAAEDQLdmCQGcAU3KEhugr5RXnwk5np57YQACxwIAAse-kFcVaahOICZWWB4E") 
-        await asyncio.sleep(2)
+        await asyncio.sleep(1)
         await m.delete()
         await message.reply_photo(
             photo=random.choice(PICS),
@@ -93,7 +93,7 @@ async def start(client, message):
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/Pro_Moviez_Bot?startgroup=true")
+            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url="http://t.me/Pro_Moviez_Bot?startgroup=true")
             ],[
             InlineKeyboardButton("Gʀᴏᴜᴩ 📯", url='https://t.me/malayalam_requester_bot'),
             InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/Mod_Moviez_X")
@@ -109,43 +109,6 @@ async def start(client, message):
         )
         return
     data = message.command[1]
-    if data.split("-", 1)[0] == "VJ":
-        user_id = int(data.split("-", 1)[1])
-        vj = await referal_add_user(user_id, message.from_user.id)
-        if vj and PREMIUM_AND_REFERAL_MODE == True:
-            await message.reply(f"<b>You have joined using the referral link of user with ID {user_id}\n\nSend /start again to use the bot</b>")
-            num_referrals = await get_referal_users_count(user_id)
-            await client.send_message(chat_id = user_id, text = "<b>{} start the bot with your referral link\n\nTotal Referals - {}</b>".format(message.from_user.mention, num_referrals))
-            if num_referrals == REFERAL_COUNT:
-                time = REFERAL_PREMEIUM_TIME       
-                seconds = await get_seconds(time)
-                if seconds > 0:
-                    expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
-                    user_data = {"id": user_id, "expiry_time": expiry_time} 
-                    await db.update_user(user_data)  # Use the update_user method to update or insert user data
-                    await delete_all_referal_users(user_id)
-                    await client.send_message(chat_id = user_id, text = "<b>You Have Successfully Completed Total Referal.\n\nYou Added In Premium For {}</b>".format(REFERAL_PREMEIUM_TIME))
-                    return 
-        else:
-            buttons = [[
-            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/Pro_Moviez_Bot?startgroup=true")
-            ],[
-            InlineKeyboardButton("Gʀᴏᴜᴩ 📯", url='https://t.me/malayalam_requester_bot'),
-            InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/Mod_Moviez_X")
-            ],[      
-            InlineKeyboardButton("Bᴏᴛ Uᴩᴅᴀᴛᴇꜱ 💡", url="https://t.me/bot_cracker")
-        ]]
-            reply_markup = InlineKeyboardMarkup(buttons)
-            m=await message.reply_sticker("CAACAgUAAxkBAAEKVaxlCWGs1Ri6ti45xliLiUeweCnu4AACBAADwSQxMYnlHW4Ls8gQMAQ") 
-            await asyncio.sleep(1)
-            await m.delete()
-            await message.reply_photo(
-                photo=random.choice(PICS),
-                caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
-                reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML
-            )
-            return 
     try:
         pre, file_id = data.split('_', 1)
     except:
