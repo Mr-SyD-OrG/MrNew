@@ -4,6 +4,7 @@
 
 
 class script(object):
+    
     START_TXT = """<b>✨ Hᴇʟʟᴏ {user}.
 <blockquote>Mʏ Nᴀᴍᴇ Is {bot}.</blockquote>
 I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Tʏᴩᴇ Aɴᴅ Sᴇɴᴅ Tʜᴇ Mᴏᴠɪᴇ Aɴᴅ Yᴇᴀʀ ✨
