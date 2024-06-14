@@ -84,8 +84,8 @@ async def start(client, message):
                 await db.set_msg_command(message.from_user.id, com=message.command[1])
                 text = "Sᴏʀʀʏ Bʀ0! 🥲 Pʟᴇᴀꜱᴇ RᴇQᴜᴇꜱᴛ Tᴏ Jᴏɪɴ ᴏN Mʏ Bᴀᴄᴋ-Uᴩ Cʜᴀɴɴᴇʟ, Yᴏᴜ'ʀᴇ Nᴏᴛ RᴇQᴜᴇꜱᴛᴇᴅ🥹,\nPʟᴇᴀsᴇ Cʟɪᴄᴋ Jᴏɪɴ Bᴜᴛᴛᴏɴ Tᴏ RᴇQᴜᴇꜱᴛ Mʏ Cʜᴀɴɴᴇʟ Aɴᴅ ɪ'ʟʟ Wɪʟʟ Pʀᴏᴠɪᴅᴇ Yᴏᴜ Tʜᴇ Fɪʟᴇ..\n<blockquote>Nᴏ Aᴅꜱ, Nᴏ ɪɴᴅɪʀEᴄᴛ Lɪɴᴋꜱ, Nᴏ Vᴇʀɪꜰɪᴄᴀᴛɪᴏɴ...</blockquote>"
         else:
-            text = "Sᴏʀʀʏ Bʀ0! 🥲 Pʟᴇᴀꜱᴇ Jᴏɪɴ ᴏN Mʏ Cʜᴀɴɴᴇʟ, Yᴏᴜ'ʀᴇ Nᴏᴛ Jᴏɪɴᴇᴅ🥹,\n \nPʟᴇᴀsᴇ Cʟɪᴄᴋ Jᴏɪɴ Bᴜᴛᴛᴏɴ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Aɴᴅ Tʀʏ Aɢᴀɪɴ 🙏\n\n**Nᴏ Aᴅꜱ, Nᴏ ɪɴᴅɪʀEᴄᴛ Lɪɴᴋꜱ, Nᴏ Vᴇʀɪꜰɪᴄᴀᴛɪᴏɴ...**"
-        await client.send_message(
+            text=script.SYDSUB_TXT
+            await client.send_message(
             chat_id=message.from_user.id,
             text=text,
             reply_markup=InlineKeyboardMarkup(btn),
