@@ -47,6 +47,7 @@ async def start(client, message):
             ],[      
             InlineKeyboardButton("Bᴏᴛ Uᴩᴅᴀᴛᴇꜱ 💡", url="https://t.me/bot_cracker")
         ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         m = await message.reply_sticker("CAACAgUAAxkBAAEDQLdmCQGcAU3KEhugr5RXnwk5np57YQACxwIAAse-kFcVaahOICZWWB4E") 
         await asyncio.sleep(1)
         await m.delete()
