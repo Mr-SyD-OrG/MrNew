@@ -22,10 +22,10 @@ join_db = JoinReqs
 async def start(client, message):
     await message.react(emoji="👀")
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        buttons = [[           
-            InlineKeyboardButton('📢 Uᴩᴅᴀᴛᴇꜱ 📢', url=f'https://t.me/Mod_Moviez_X')
-            ],[
-            InlineKeyboardButton('ℹ️ Hᴇʟᴩ ℹ️', url=f"https://t.me/{temp.U_NAME}?start=help")
+        buttons = [[
+            InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+        ],[
+            InlineKeyboardButton('✇ Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ✇', url=CHNL_LNK)
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup, disable_web_page_preview=True)
@@ -39,21 +39,21 @@ async def start(client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
-        buttons = [[
-            InlineKeyboardButton("➕️ Aᴅᴅ Bʀᴏ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url="http://t.me/Pro_Moviez_Bot?startgroup=true")
-            ],[
-            InlineKeyboardButton("Gʀᴏᴜᴩ 📯", url="https://t.me/malayalam_requester_bot"),
-            InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/Mod_Moviez_X")
-            ],[      
-            InlineKeyboardButton("Bᴏᴛ Uᴩᴅᴀᴛᴇꜱ 💡", url="https://t.me/bot_cracker")
-        ]]
+        if PREMIUM_AND_REFERAL_MODE == True:
+            buttons = [[
+                InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ]]
+        else:
+            buttons = [[
+                InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        m = await message.reply_sticker("CAACAgUAAxkBAAEDQLdmCQGcAU3KEhugr5RXnwk5np57YQACxwIAAse-kFcVaahOICZWWB4E") 
+        m=await message.reply_sticker("CAACAgUAAxkBAAEDp-hmbn8Uuo9Cclr5dK_O3mWhI7pW_wACLRAAAhU-eVePHNrbbSalgR4E") 
         await asyncio.sleep(1)
         await m.delete()
         await message.reply_photo(
             photo=random.choice(PICS),
-            caption=script.START_TXT.format(message.from_user.mention),
+            caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
