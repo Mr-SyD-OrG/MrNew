@@ -9,6 +9,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
 from info import INDEX_REQ_CHANNEL as LOG_CHANNEL
+from info import INDEX_CHANNEL
 from database.ia_filterdb import save_file
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -187,4 +188,12 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
         else:
             await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>(Unsupported Media - `{unsupported}` )\nErrors Occurred: <code>{errors}</code>')
 
-@Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
+@Client.on_message(filters.document | filters.audio | filters.video))
+async def auto(bot, message):
+    if message.chat.id != INDEX_ID:
+        return 
+    else:
+        media = getattr(message, message.media.value, None)
+        media.file_type = message.media.value
+        media.caption = message.caption
+        aynav, vnay = await save_file(media)
