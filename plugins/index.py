@@ -190,7 +190,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
 
 @Client.on_message(filters.document | filters.audio | filters.video))
 async def auto(bot, message):
-    if message.chat.id != INDEX_ID:
+    if message.chat.id != INDEX_CHANNEL:
         return 
     else:
         media = getattr(message, message.media.value, None)
